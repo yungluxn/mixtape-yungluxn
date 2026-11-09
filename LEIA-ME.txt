@@ -1,0 +1,13 @@
+MIXTAPE-YUNGLUXN — AJUSTES PARA CELULAR
+
+Este pacote modifica SOMENTE o arquivo style.css.
+
+Atualização via GitHub Desktop:
+1. Abra Repository > Show in Explorer.
+2. Copie style.css para a pasta principal do repositório, substituindo o antigo.
+3. Volte ao GitHub Desktop e faça Commit to main e Push origin.
+4. Depois do deploy na Vercel, atualize o site no celular.
+
+Não altere ou reenvie playlists.js, index.html, script.js, a capa, vercel.json nem a pasta audio.
+
+Melhorias: capa e título responsivos, biblioteca em uma coluna nos celulares, tracklist com área de toque maior e player fixo mais compacto e adaptável.

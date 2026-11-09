@@ -114,3 +114,72 @@ input[type="range"] { accent-color: #eee; cursor: pointer; }
   .persistent-player { padding: 9px 14px; }
   body.has-player { padding-bottom: 145px; }
 }
+
+/* Atualização mobile — somente apresentação; nenhuma alteração em dados/áudios. */
+@media (max-width: 600px) {
+  html { -webkit-text-size-adjust: 100%; }
+  .site { padding-inline: 20px; }
+  .site-header { padding-block: 23px; }
+  .wordmark { font-size: 17px; overflow-wrap: anywhere; }
+
+  /* A biblioteca vira um portfólio de uma coluna em telas estreitas. */
+  .intro { padding: 45px 0 32px; }
+  .intro h1 { font-size: clamp(36px, 10vw, 46px); }
+  .intro p { max-width: 35ch; font-size: 13px; }
+  .section-top { margin-bottom: 17px; }
+  .projects { grid-template-columns: minmax(0, 1fr); gap: 34px; }
+  .project-cover { max-width: 440px; margin-inline: auto; }
+  .project-title { font-size: 15px; margin-top: 13px; line-height: 1.4; }
+  .project-subtitle { font-size: 12px; }
+  .collection { padding-bottom: 65px; }
+  .site-footer { padding-block: 22px 30px; }
+
+  /* Página individual: capa centralizada, título sem cortes e lista com áreas de toque confortáveis. */
+  .project-page { padding: 24px 0 66px; }
+  .back-link { margin-bottom: 24px; padding-block: 9px; }
+  .release-layout { grid-template-columns: minmax(0, 1fr); gap: 27px; }
+  .release-artwork { width: min(100%, 340px); margin-inline: auto; }
+  .release-content { min-width: 0; }
+  .release-title { font-size: clamp(28px, 7.8vw, 38px); line-height: 1.12; overflow-wrap: anywhere; }
+  .release-artist { margin-bottom: 15px; }
+  .release-description { margin-bottom: 25px; }
+  .tracklist-heading { flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+  .tracklist-heading span { font-size: 11px; }
+  .track-select { min-height: 54px; padding: 11px 8px; gap: 11px; }
+  .track-name { font-size: 13px; line-height: 1.35; }
+  .track-index { flex: none; width: 22px; }
+  .track-duration { flex: none; }
+  .track-playing-indicator { flex: none; width: 16px; }
+
+  /* Player compacto com barra de progresso utilizável sem zoom. */
+  .persistent-player {
+    padding: 10px 16px calc(11px + env(safe-area-inset-bottom, 0px));
+  }
+  .player-inner { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .player-identity { grid-row: auto; grid-column: 1; gap: 10px; }
+  .player-cover { width: 40px; height: 40px; }
+  .player-info strong { font-size: 12px; }
+  .player-info span { font-size: 11px; }
+  .player-main { grid-row: auto; grid-column: 1; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 10px; }
+  .player-buttons { gap: 2px; justify-content: flex-start; }
+  .player-buttons button { min-width: 40px; min-height: 40px; font-size: 16px; padding: 0; }
+  .player-buttons .play-button { min-width: 40px; min-height: 40px; width: 40px; height: 40px; }
+  .progress-row { min-width: 0; gap: 6px; font-size: 9px; }
+  .progress-row input { width: 100%; min-width: 25px; }
+  .player-volume { display: none; }
+  .audio-error { line-height: 1.4; }
+  body.has-player { padding-bottom: calc(145px + env(safe-area-inset-bottom, 0px)); }
+}
+
+@media (max-width: 360px) {
+  .site { padding-inline: 15px; }
+  .persistent-player { padding-inline: 10px; }
+  .player-main { gap: 5px; }
+  .player-buttons button { min-width: 36px; }
+  .player-buttons .play-button { min-width: 38px; width: 38px; min-height: 38px; height: 38px; }
+  .progress-row { gap: 4px; }
+}
+
+@media (max-width: 760px) and (orientation: landscape) {
+  .release-artwork { width: min(100%, 240px); }
+}
