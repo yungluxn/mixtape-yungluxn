@@ -57,3 +57,60 @@
   .dialog-desc{margin-bottom:20px}
 }
 @media(prefers-reduced-motion:reduce){.track-select,.player-nav button{transition:none}}
+
+/* Biblioteca com páginas individuais e player global */
+[hidden] { display: none !important; }
+body.has-player { padding-bottom: 112px; }
+.project-card { display: block; text-decoration: none; }
+.project-page { padding: 43px 0 100px; min-height: 65vh; }
+.back-link, .not-found a { display: inline-block; color: #9b9b9b; text-decoration: none; font-size: 13px; margin-bottom: 38px; }
+.back-link:hover,.not-found a:hover { color: #fff; }
+.release-layout { display: grid; grid-template-columns: minmax(250px, 365px) minmax(0, 1fr); gap: clamp(28px, 5vw, 74px); align-items: start; }
+.release-artwork { position: sticky; top: 28px; }
+.release-cover,.release-cover-image { display: block; width: 100%; aspect-ratio: 1; background-size: cover; background-position: center; border-radius: 3px; overflow: hidden; }
+.release-cover-image { display: flex; align-items: center; justify-content: center; }
+.release-title { font-size: clamp(27px, 3.7vw, 45px); letter-spacing: -.055em; line-height: 1.1; margin: 0 0 12px; overflow-wrap: break-word; }
+.release-artist { font-size: 15px; color: #ddd; margin: 0 0 18px; }
+.release-description { color: #8c8c8c; font-size: 13px; margin: 0 0 40px; line-height: 1.65; }
+.tracklist-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 14px; }
+.tracklist-heading h2 { font-size: 17px; letter-spacing: -.025em; font-weight: 600; margin: 0; }
+.tracklist-heading span { color: #8c8c8c; font-size: 12px; font-variant-numeric: tabular-nums; }
+.track-select { text-align: left; }
+.track-select.is-current { background: #242424; box-shadow: inset 2px 0 0 #eaeaea; }
+.track-playing-indicator { width: 18px; text-align: center; font-size: 14px; color: #dedede; }
+.not-found { min-height: 55vh; padding: 90px 0; }
+.not-found h1 { font-size: 34px; letter-spacing: -.04em; }
+.persistent-player { position: fixed; z-index: 50; left: 0; right: 0; bottom: 0; background: #181818; border-top: 1px solid #343434; color: #eee; padding: 11px 24px 12px; box-shadow: 0 -8px 35px #0005; }
+.player-inner { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(210px, 1.2fr) minmax(90px, 1fr); align-items: center; gap: 24px; max-width: 1300px; margin: 0 auto; }
+.player-identity { display:flex; gap: 12px; min-width: 0; align-items:center; }
+.player-cover { height: 48px; width:48px; flex:none; }
+.player-cover-image { width: 100%; height:100%; background-size:cover; background-position:center; border-radius: 2px; display: flex; align-items:center; justify-content:center; }
+.player-cover-image .cover-symbol { font-size: 24px; }
+.player-info { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.player-info strong { font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.player-info span { font-size: 11px; color: #929292; }
+.player-main { display: flex; flex-direction:column; gap:8px; }
+.player-buttons { display:flex; align-items:center; justify-content:center; gap:18px; }
+.player-buttons button { border: 0; background: transparent; color: #ddd; font-size: 18px; cursor: pointer; padding: 4px 7px; }
+.player-buttons button:disabled { opacity: .3; cursor: default; }
+.player-buttons .play-button { border: 1px solid #ddd; border-radius: 50%; width: 35px; height: 35px; font-size: 14px; padding: 0; }
+.progress-row { display:flex; align-items:center; gap:10px; color:#989898; font-size: 10px; font-variant-numeric:tabular-nums; }
+.progress-row input { flex: 1; min-width: 0; }
+.player-volume { display:flex; align-items:center; gap:10px; justify-content:flex-end; color:#999; }
+.player-volume input { width: clamp(60px,8vw,110px); }
+input[type="range"] { accent-color: #eee; cursor: pointer; }
+.audio-error { color: #f5aaa6; font-size: 11px; text-align:center; margin: 5px 0 0; }
+@media(max-width:760px) {
+  .release-layout { grid-template-columns: 1fr; gap:26px; }
+  .release-artwork { position:static; width:min(100%, 340px); }
+  .project-page { padding-top:28px; }
+  .back-link { margin-bottom:24px; }
+  .release-description { margin-bottom:24px; }
+  .player-inner { grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+  .player-main { grid-column: 1 / -1; grid-row: 2; }
+  .player-volume { display:none; }
+  .player-identity { grid-column: 1 / -1; grid-row: 1; }
+  .player-cover { width:34px; height:34px; }
+  .persistent-player { padding: 9px 14px; }
+  body.has-player { padding-bottom: 145px; }
+}

@@ -1,25 +1,22 @@
-# mixtape-yungluxn — biblioteca musical
+# mixtape-yungluxn — atualização: player e páginas individuais
 
-Este site tem um projeto: **BASED POSITIVE SQUAD VOL. 2** (Mixtape, 2027), com 11 faixas em MP3 (320 kbps). A capa é provisória.
+Esta versão inclui:
+- player fixo que continua tocando durante a navegação entre páginas internas;
+- tracklist com duração total e indicador da faixa selecionada;
+- endereço individual para cada projeto, com suporte a link direto na Vercel.
 
-## Como testar
+## Atualizar o site já publicado
 
-Abra `index.html` no navegador, clique na capa e escolha uma música. O player permite pausar, avançar e voltar; a próxima faixa começa automaticamente ao terminar a atual.
+Substitua na **raiz** do repositório do GitHub os arquivos `index.html`, `script.js` e `style.css`. Adicione também `vercel.json` na raiz. Os arquivos `playlists.js`, a capa e a pasta `audio` existentes **não precisam ser alterados**.
 
-## Como publicar (GitHub + Vercel)
+No GitHub Desktop, faça **Commit to main** e **Push origin**. Quando a Vercel indicar **Ready**, atualize a página com Ctrl+F5.
 
-1. Extraia todo o ZIP no computador.
-2. No repositório `mixtape-yungluxn` do GitHub, abra `Add file > Upload files`.
-3. Envie `index.html`, `style.css`, `script.js`, `playlists.js` e `README.md` para a raiz do repositório.
-4. **Crie a pasta `audio` no repositório com os onze arquivos MP3 dentro dela.** No GitHub pelo navegador é possível arrastar uma pasta em navegadores compatíveis; caso não funcione, use o GitHub Desktop para enviar a pasta inteira, ou abra o caminho `audio/` e envie os MP3 ali.
-5. Faça o commit na branch usada pela Vercel. Em Vercel > Deployments, confirme que a atualização está em `Ready`.
+## Endereço do projeto
 
-**Atenção:** sem a pasta `audio` no repositório, o player aparecerá mas as músicas não tocarão. Envie somente faixas que você tenha direitos para disponibilizar publicamente.
+`https://mixtape-yunglxun.vercel.app/projetos/based-positive-squad-mixtape-vol-2`
 
-## Como editar
+O `vercel.json` é essencial para que um link direto para a página do projeto funcione ao abrir ou recarregar o navegador. O player permanece ativo ao navegar **dentro do site**, sem recarregamento completo. Ao atualizar a página ou abrir um link em outra aba, a reprodução não é preservada.
 
-Edite `playlists.js` para mudar títulos e ordem da tracklist. As faixas são lidas a partir da pasta `audio/`. Para colocar capa oficial, crie uma pasta `capas` com a imagem e adicione ao objeto de projeto `cover: "capas/nome-da-capa.jpg",`.
+## Dependências existentes
 
-## Armazenamento
-
-A pasta `audio` pesa aproximadamente 53 MB. Para uma biblioteca pessoal pequena pode funcionar em hospedagem estática, mas confira os limites e termos atuais do GitHub/Vercel. Em projetos maiores, considere armazenamento de áudio separado. O repositório público permite que qualquer pessoa baixe as faixas, mesmo que não exista botão de download no site.
+O projeto atual continua usando `playlists.js`, a imagem `based-positive-squad-mixtape-vol-2-cover.png` e os 11 MP3 dentro de `audio/`.
