@@ -1,10 +1,11 @@
 /* Edita este arquivo para atualizar os projetos, a ordem das músicas e as capas. */
 const PLAYLISTS = [
   {
-    "id": "based-positive-squad-vol-2",
-    "title": "BASED POSITIVE SQUAD VOL. 2",
-    "subtitle": "Mixtape · 2027",
+    "id": "based-positive-squad-mixtape-vol-2",
+    "title": "BASED POSITIVE SQUAD MIXTAPE VOL. 2",
+    "subtitle": "Yung Luxn · 2027",
     "year": "2027",
+    "cover": "based-positive-squad-mixtape-vol-2-cover.png",
     "colors": [
       "#222222",
       "#4b4b4b"

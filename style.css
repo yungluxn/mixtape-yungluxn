@@ -19,3 +19,41 @@
 .track-select:hover,.track-select.is-current{color:white;background:#242424}
 .track-select:disabled{opacity:.5;cursor:default}.track-name{font-size:13px;flex:1;min-width:0;overflow-wrap:anywhere}
 .track-duration{font-variant-numeric:tabular-nums;font-size:11px;color:#888}
+
+
+/* Página do projeto: edição visual minimalista, com foco na capa e nas faixas */
+.project-dialog{width:min(1020px,calc(100% - 32px));max-height:min(90dvh,960px);background:#141414;border:1px solid #333;border-radius:6px;padding:clamp(22px,3.5vw,42px)}
+.dialog-layout{grid-template-columns:minmax(230px,350px) minmax(0,1fr);gap:clamp(24px,4.5vw,54px);align-items:start}
+.dialog-cover{position:sticky;top:0;border-radius:2px;box-shadow:0 16px 40px #0006}
+.dialog-info h2{font-size:clamp(27px,3.5vw,43px);line-height:1.07;letter-spacing:-.052em;margin:0 0 18px;overflow-wrap:anywhere}
+.eyebrow{font-size:11px;color:#999;letter-spacing:.14em;margin-bottom:13px}
+.dialog-desc{color:#999;margin:0 0 30px;line-height:1.6}
+.player-box{border-top:1px solid #333;padding:25px 0 26px}
+.now-playing-label{color:#828282;font-size:10px;letter-spacing:.15em;margin-bottom:9px}
+.now-playing{font-size:15px;line-height:1.4;min-height:21px;margin-bottom:15px}
+.now-playing.has-track{color:#f2f2f2}
+.player-box audio{width:100%;height:46px;accent-color:#e6e6e6}
+.player-nav{margin-top:14px}
+.player-nav button{border:1px solid #353535;background:#1e1e1e;padding:10px 14px;transition:background .2s}
+.player-nav button:disabled{opacity:.32;cursor:not-allowed}
+.player-nav button:not(:disabled):hover{background:#303030}
+.dialog-tracks{border-top:1px solid #353535}
+.track{border-bottom:1px solid #2a2a2a}
+.track-select{border-radius:2px;min-height:53px;gap:16px;padding:12px 10px;transition:background .16s ease}
+.track-select:hover{background:#222}
+.track-select.is-current{background:#242424;box-shadow:inset 2px 0 0 #eaeaea}
+.track-select:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.track-index{width:22px;text-align:right;font-variant-numeric:tabular-nums;color:#777}
+.track-name{font-size:13px;font-weight:500}
+.track-select.is-current .track-name{font-weight:700}
+.track-duration{color:#999;font-size:11px}
+.track-playing-indicator{font-size:15px;color:#ddd;visibility:hidden;width:14px;text-align:center}
+.track-select.is-current .track-playing-indicator{visibility:visible}
+@media(max-width:740px){
+  .project-dialog{width:min(500px,calc(100% - 20px));padding:25px 20px;max-height:92dvh}
+  .dialog-layout{grid-template-columns:1fr;gap:24px}
+  .dialog-cover{position:static;width:min(100%,320px);max-width:320px;margin:0 auto}
+  .dialog-info h2{font-size:clamp(27px,7vw,37px)}
+  .dialog-desc{margin-bottom:20px}
+}
+@media(prefers-reduced-motion:reduce){.track-select,.player-nav button{transition:none}}

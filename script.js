@@ -6,6 +6,7 @@
   const dialog = $('#projectDialog');
   let activeProject = null;
   let activeIndex = -1;
+  const nowPlaying = $('#nowPlaying');
   const element = (tag, className, label) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
@@ -41,12 +42,20 @@
     if (!src) return;
     activeIndex = index;
     audio.src = src;
-    $('#nowPlaying').textContent = `${String(index + 1).padStart(2, '0')} · ${track.title}`;
+    nowPlaying.textContent = `${String(index + 1).padStart(2, '0')} · ${track.title}`;
+    nowPlaying.classList.add('has-track');
     document.querySelectorAll('.track-select').forEach((button, i) => {
       button.classList.toggle('is-current', i === index);
-      button.setAttribute('aria-current', i === index ? 'true' : 'false');
+      if (i === index) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
     });
-    if (shouldPlay) audio.play().catch(() => {});
+    updateNavigation();
+    if (shouldPlay) audio.play().catch(() => { nowPlaying.textContent = `${track.title} · aperte play para ouvir`; });
+  }
+  function updateNavigation() {
+    const total = activeProject?.tracks?.length || 0;
+    $('#previousTrack').disabled = activeIndex <= 0;
+    $('#nextTrack').disabled = activeIndex < 0 || activeIndex >= total - 1;
   }
   function openProject(project) {
     audio.pause(); audio.removeAttribute('src'); audio.load();
@@ -57,7 +66,9 @@
     $('#dialogYear').textContent = project.year || 'PROJETO';
     $('#dialogTitle').textContent = project.title || 'Sem título';
     $('#dialogDesc').textContent = project.description || 'Projeto em desenvolvimento.';
-    $('#nowPlaying').textContent = 'Selecione uma faixa';
+    nowPlaying.textContent = 'Selecione uma faixa';
+    nowPlaying.classList.remove('has-track');
+    updateNavigation();
     const tracks = $('#dialogTracks'); tracks.replaceChildren();
     const available = (project.tracks || []).filter(t => safeUrl(t.audio));
     $('#playerBox').hidden = available.length === 0;
@@ -71,6 +82,7 @@
         button.append(element('span', 'track-index', String(i + 1).padStart(2, '0')));
         button.append(element('span', 'track-name', track.title || 'Sem título'));
         button.append(element('span', 'track-duration', track.duration || ''));
+        button.append(element('span', 'track-playing-indicator', '♫'));
         if (safeUrl(track.audio)) button.onclick = () => selectTrack(i);
         else button.disabled = true;
         row.append(button);
@@ -81,6 +93,9 @@
   }
   $('#previousTrack').onclick = () => selectTrack(Math.max(0, activeIndex - 1));
   $('#nextTrack').onclick = () => selectTrack(Math.min((activeProject?.tracks || []).length - 1, activeIndex + 1));
+  audio.addEventListener('error', () => {
+    if (activeIndex >= 0) nowPlaying.textContent = 'Não foi possível carregar este áudio';
+  });
   audio.addEventListener('ended', () => {
     if (activeIndex + 1 < (activeProject?.tracks || []).length) selectTrack(activeIndex + 1);
   });
@@ -98,5 +113,5 @@
   $('#year').textContent = new Date().getFullYear();
   $('#closeDialog').onclick = () => dialog.close();
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-  dialog.addEventListener('close', () => { audio.pause(); audio.removeAttribute('src'); audio.load(); });
+  dialog.addEventListener('close', () => { audio.pause(); audio.removeAttribute('src'); audio.load(); activeIndex = -1; });
 })();
