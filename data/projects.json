@@ -1,17 +1,6 @@
 {
   "projects": [
     {
-      "id": "based-positive-squad-mixtape-vol-2",
-      "title": "BASED POSITIVE SQUAD MIXTAPE VOL. 2",
-      "subtitle": "Yung Luxn · 2027",
-      "year": "2027",
-      "cover": "based-positive-squad-mixtape-vol-2-cover.png",
-      "colors": [
-        "#222222",
-        "#4b4b4b"
-      ],
-      "symbol": "02",
-      "description": "",
       "tracks": [
         {
           "title": "HOLIDAY",
@@ -19,14 +8,9 @@
           "duration": "2:23"
         },
         {
-          "title": "IMPORTANTE",
-          "audio": "audio/IMPORTANTE.mp3",
-          "duration": "2:02"
-        },
-        {
-          "title": "MAÇARICO",
-          "audio": "audio/MAÇARICO.mp3",
-          "duration": "2:14"
+          "title": "BORRÉ",
+          "audio": "audio/BORRÉ.mp3",
+          "duration": "2:06"
         },
         {
           "title": "QUARENTENA",
@@ -39,24 +23,19 @@
           "duration": "2:10"
         },
         {
-          "title": "WDYM?",
-          "audio": "audio/WDYM.mp3",
-          "duration": "2:01"
+          "title": "IMPORTANTE",
+          "audio": "audio/IMPORTANTE.mp3",
+          "duration": "2:02"
         },
         {
-          "title": "SCOOBY-DOO",
-          "audio": "audio/SCOOBY-DOO.mp3",
-          "duration": "2:10"
+          "title": "MAÇARICO",
+          "audio": "audio/MAÇARICO.mp3",
+          "duration": "2:14"
         },
         {
-          "title": "2016 FREESTYLE",
-          "audio": "audio/2016 FREESTYLE.mp3",
-          "duration": "1:38"
-        },
-        {
-          "title": "BORRÉ",
-          "audio": "audio/BORRÉ.mp3",
-          "duration": "2:06"
+          "title": "CONTENTE",
+          "audio": "audio/CONTENTE.mp3",
+          "duration": "2:13"
         },
         {
           "title": "COMPROMETIDO",
@@ -64,11 +43,32 @@
           "duration": "1:48"
         },
         {
-          "title": "CONTENTE",
-          "audio": "audio/CONTENTE.mp3",
-          "duration": "2:13"
+          "title": "2016 FREESTYLE",
+          "audio": "audio/2016 FREESTYLE.mp3",
+          "duration": "1:38"
+        },
+        {
+          "title": "SCOOBY-DOO",
+          "audio": "audio/SCOOBY-DOO.mp3",
+          "duration": "2:10"
+        },
+        {
+          "title": "WDYM?",
+          "audio": "audio/WDYM.mp3",
+          "duration": "2:01"
         }
-      ]
+      ],
+      "colors": [
+        "#222222",
+        "#4b4b4b"
+      ],
+      "cover": "based-positive-squad-mixtape-vol-2-cover.png",
+      "subtitle": "Yung Luxn · 2027",
+      "symbol": "02",
+      "title": "BASED POSITIVE SQUAD MIXTAPE VOL. 2",
+      "id": "based-positive-squad-mixtape-vol-2",
+      "description": "Volume 2 do projeto BASED POSITIVE SQUAD MIXTAPE, de Yung Luxn e Juggsyndrome.",
+      "year": "2027"
     }
   ]
 }
