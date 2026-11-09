@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const $ = (selector) => document.querySelector(selector);
-  const projects = typeof PLAYLISTS === 'undefined' ? [] : PLAYLISTS;
+  let projects = [];
   const audio = $('#trackPlayer');
   const player = $('#persistentPlayer');
   let playingProject = null;
@@ -142,7 +142,7 @@
     if (path === '/') renderHome();
     else if (match) {
       const project = projects.find(item => item.id === match[1]);
-      if (project) renderProject(project);
+      if (project && project.published !== false) renderProject(project);
       else { $('#homeView').hidden = true; $('#projectView').hidden = true; $('#notFoundView').hidden = false; currentViewProject = null; }
     } else { $('#homeView').hidden = true; $('#projectView').hidden = true; $('#notFoundView').hidden = false; currentViewProject = null; }
     window.scrollTo({top: 0, behavior: 'instant'});
@@ -152,20 +152,36 @@
     resolveRoute();
   }
 
-  $('#projectsList').replaceChildren();
-  projects.forEach(project => {
-    const link = node('a', 'project-card');
-    link.href = projectPath(project);
-    link.setAttribute('aria-label', 'Abrir projeto ' + project.title);
-    link.append(artwork(project, 'project-cover'), node('span', 'project-title', project.title), node('span', 'project-subtitle', project.subtitle || project.year || ''));
-    link.onclick = event => { if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); navigate(link.getAttribute('href')); } };
-    $('#projectsList').append(link);
-  });
+  async function loadProjects() {
+    try {
+      const response = await fetch('/data/projects.json', { cache: 'no-store' });
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const data = await response.json();
+      if (!Array.isArray(data.projects)) throw new Error('Formato inválido');
+      projects = data.projects;
+      const container = $('#projectsList');
+      container.replaceChildren();
+      projects.filter(project => project.published !== false).forEach(project => {
+        const link = node('a', 'project-card');
+        link.href = projectPath(project);
+        link.setAttribute('aria-label', 'Abrir projeto ' + project.title);
+        link.append(artwork(project, 'project-cover'), node('span', 'project-title', project.title), node('span', 'project-subtitle', project.subtitle || project.year || ''));
+        link.onclick = event => { if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); navigate(link.getAttribute('href')); } };
+        container.append(link);
+      });
+      const count = container.childElementCount;
+      $('#projectCount').textContent = `${count} ${count === 1 ? 'projeto' : 'projetos'}`;
+      $('#emptyState').hidden = count !== 0;
+    } catch (error) {
+      console.error('Falha ao carregar biblioteca:', error);
+      $('#emptyState').hidden = false;
+      $('#emptyState').textContent = 'Não foi possível carregar a biblioteca. Atualize a página.';
+    }
+    resolveRoute();
+  }
   ['homeLink', 'backLink', 'notFoundLink'].forEach(id => {
     $('#' + id).onclick = event => { if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); navigate('/'); } };
   });
-  $('#projectCount').textContent = `${projects.length} ${projects.length === 1 ? 'projeto' : 'projetos'}`;
-  $('#emptyState').hidden = projects.length !== 0;
   $('#year').textContent = new Date().getFullYear();
   $('#prevButton').onclick = () => jump(-1);
   $('#nextButton').onclick = () => jump(1);
@@ -183,5 +199,5 @@
   audio.addEventListener('ended', () => { if (playingProject && selectedIndex + 1 < playingProject.tracks.length) jump(1); });
   audio.addEventListener('error', () => { $('#audioError').textContent = 'Não foi possível carregar esta faixa. Confira se o arquivo MP3 está na pasta audio.'; $('#audioError').hidden = false; });
   window.addEventListener('popstate', resolveRoute);
-  resolveRoute();
+  loadProjects();
 })();

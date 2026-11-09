@@ -1,0 +1,43 @@
+# Configure o Site ID obtido no painel Decap Turbo (veja README).
+backend:
+  name: turbo-github
+  turbo_site_id: COLE_AQUI_O_SITE_ID
+  branch: main
+
+locale: pt
+media_folder: media
+public_folder: /media
+
+collections:
+  - name: biblioteca
+    label: Biblioteca musical
+    files:
+      - name: projetos
+        label: Projetos e tracklists
+        file: data/projects.json
+        format: json
+        fields:
+          - name: projects
+            label: Projetos
+            widget: list
+            summary: '{{fields.title}}'
+            label_singular: Projeto
+            collapsed: true
+            fields:
+              - { name: id, label: Identificador do link, widget: string, hint: 'Evite alterar depois de publicar. Use letras minúsculas e hífens.' }
+              - { name: title, label: Título, widget: string }
+              - { name: subtitle, label: 'Artista e ano (ex. Yung Luxn · 2027)', widget: string }
+              - { name: year, label: Ano, widget: string }
+              - { name: published, label: Visível no site, widget: boolean, required: false, default: true }
+              - { name: cover, label: Capa, widget: image, required: false }
+              - { name: description, label: Descrição, widget: text, required: false }
+              - name: tracks
+                label: Faixas (use as setas para reorganizar)
+                widget: list
+                summary: '{{fields.title}}'
+                label_singular: Faixa
+                collapsed: true
+                fields:
+                  - { name: title, label: Nome da faixa, widget: string }
+                  - { name: audio, label: Caminho do MP3, widget: string, required: false, hint: 'Ex. audio/WDYM.mp3. Não use ? no nome físico do arquivo.' }
+                  - { name: duration, label: 'Duração (m:ss)', widget: string, required: false }
