@@ -133,6 +133,12 @@
     $('#projectTitle').textContent = project.title;
     $('#projectArtist').textContent = (project.subtitle || '').split('·')[0].trim();
     $('#projectDescription').textContent = project.description || 'Projeto em desenvolvimento.';
+    const playProjectButton = $('#playProjectButton');
+    const firstPlayable = (project.tracks || []).findIndex(track => assetUrl(track.audio));
+    playProjectButton.disabled = firstPlayable === -1;
+    playProjectButton.onclick = () => {
+      if (firstPlayable >= 0) chooseTrack(project, firstPlayable);
+    };
     renderTracklist(project);
     document.title = `${project.title} — mixtape-yungluxn`;
   }
@@ -162,12 +168,26 @@
       const container = $('#projectsList');
       container.replaceChildren();
       projects.filter(project => project.published !== false).forEach(project => {
+        const wrapper = node('div', 'project-card-container');
         const link = node('a', 'project-card');
         link.href = projectPath(project);
         link.setAttribute('aria-label', 'Abrir projeto ' + project.title);
         link.append(artwork(project, 'project-cover'), node('span', 'project-title', project.title), node('span', 'project-subtitle', project.subtitle || project.year || ''));
         link.onclick = event => { if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); navigate(link.getAttribute('href')); } };
-        container.append(link);
+        wrapper.append(link);
+        if ((project.tracks || []).some(track => assetUrl(track.audio))) {
+          const homePlay = node('button', 'project-play-action');
+          homePlay.type = 'button';
+          homePlay.setAttribute('aria-label', 'Reproduzir ' + project.title + ' desde a primeira faixa');
+          homePlay.title = 'Reproduzir do início';
+          homePlay.textContent = '▶';
+          homePlay.onclick = () => {
+            const first = (project.tracks || []).findIndex(track => assetUrl(track.audio));
+            if (first >= 0) chooseTrack(project, first);
+          };
+          wrapper.append(homePlay);
+        }
+        container.append(wrapper);
       });
       const count = container.childElementCount;
       $('#projectCount').textContent = `${count} ${count === 1 ? 'projeto' : 'projetos'}`;

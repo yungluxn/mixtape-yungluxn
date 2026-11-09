@@ -183,3 +183,54 @@ input[type="range"] { accent-color: #eee; cursor: pointer; }
 @media (max-width: 760px) and (orientation: landscape) {
   .release-artwork { width: min(100%, 240px); }
 }
+
+
+/* Botões de reprodução — complemento discreto ao visual existente. */
+.project-card-container { position: relative; min-width: 0; }
+.project-card-container .project-card { display: block; width: 100%; }
+.project-play-action {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 50%;
+  color: #151515;
+  background: #f4f4f4;
+  box-shadow: 0 5px 18px #0007;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding-left: 3px;
+  transition: background .16s ease, transform .16s ease;
+}
+.project-play-action:hover { background: #fff; transform: scale(1.06); }
+.project-play-action:focus-visible,
+.release-play-action:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.release-play-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 11px 18px;
+  margin: 0 0 22px;
+  min-height: 44px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background: #e5e5e5;
+  color: #111;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.release-play-action:hover { background: #fff; }
+.release-play-action:disabled { opacity: .45; cursor: not-allowed; }
+.release-play-action span { font-size: 12px; }
+@media(max-width:600px) {
+  .project-play-action { width: 48px; height: 48px; top: 14px; }
+  .release-play-action { margin-bottom: 20px; }
+}
+@media(prefers-reduced-motion:reduce) { .project-play-action { transition: none; } }

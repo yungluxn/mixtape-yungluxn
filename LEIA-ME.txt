@@ -1,13 +1,13 @@
-MIXTAPE-YUNGLUXN — AJUSTES PARA CELULAR
+mixtape-yungluxn — botão Play na biblioteca e na página do projeto
 
-Este pacote modifica SOMENTE o arquivo style.css.
+Arquivos alterados: index.html, script.js e style.css.
 
-Atualização via GitHub Desktop:
-1. Abra Repository > Show in Explorer.
-2. Copie style.css para a pasta principal do repositório, substituindo o antigo.
-3. Volte ao GitHub Desktop e faça Commit to main e Push origin.
-4. Depois do deploy na Vercel, atualize o site no celular.
+Instalação:
+1. Extraia este ZIP no computador.
+2. No GitHub Desktop, abra Repository > Show in Explorer.
+3. Copie index.html, script.js e style.css para a raiz do seu repositório, substituindo os antigos.
+4. Faça Commit to main e Push origin.
+5. Após o deploy da Vercel, teste o botão Play na página inicial e dentro da página do álbum.
 
-Não altere ou reenvie playlists.js, index.html, script.js, a capa, vercel.json nem a pasta audio.
-
-Melhorias: capa e título responsivos, biblioteca em uma coluna nos celulares, tracklist com área de toque maior e player fixo mais compacto e adaptável.
+Preservados: dados de data/projects.json, a pasta admin (Decap), a capa e os 11 MP3 da pasta audio.
+A ordem da tracklist continua vindo do Decap CMS.
