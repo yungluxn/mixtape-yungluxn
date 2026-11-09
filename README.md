@@ -1,27 +1,25 @@
-# mixtape-yungluxn — biblioteca minimalista
+# mixtape-yungluxn — biblioteca musical
 
-Portfólio de projetos musicais em uma página só: nome, apresentação curta, grade de projetos e janelas com detalhes das faixas. Sem menu de gêneros, filtros, seção Sobre ou player permanente.
+Este site tem um projeto: **BASED POSITIVE SQUAD VOL. 2** (Mixtape, 2027), com 11 faixas em MP3 (320 kbps). A capa é provisória.
 
-## Como abrir
-Abra `index.html` no navegador.
+## Como testar
 
-## Como editar os projetos
-Edite `playlists.js`: cada item de `PLAYLISTS` representa um projeto. Troque os seis exemplos fictícios pelos seus próprios projetos, com `title`, `subtitle`, `year`, `description` e `tracks`. Use `cover` com o link HTTPS direto de uma imagem ou com o caminho de um arquivo adicionado ao repositório (por exemplo, `capas/meu-album.jpg`). Caso não tenha imagem, `colors` e `symbol` geram uma capa provisória.
+Abra `index.html` no navegador, clique na capa e escolha uma música. O player permite pausar, avançar e voltar; a próxima faixa começa automaticamente ao terminar a atual.
 
-Cada faixa pode ter `{title: 'nome', artist: 'nome', url: 'https://...'}` para abrir um link externo. Se tiver um arquivo de áudio com permissão de publicação, `audio` pode apontar para ele. Não disponibilize gravações de terceiros sem os direitos necessários.
+## Como publicar (GitHub + Vercel)
 
-## Atualizar no GitHub
-1. Extraia o arquivo ZIP.
-2. Abra o repositório no GitHub.
-3. Use **Add file > Upload files** e envie os cinco arquivos da pasta (não o ZIP), na raiz do repositório.
-4. Confirme **Commit changes**; se aparecer uma opção de substituir arquivos de mesmo nome, confirme.
-5. Confira o novo deploy na Vercel. O site antigo continua disponível enquanto o novo é preparado.
+1. Extraia todo o ZIP no computador.
+2. No repositório `mixtape-yungluxn` do GitHub, abra `Add file > Upload files`.
+3. Envie `index.html`, `style.css`, `script.js`, `playlists.js` e `README.md` para a raiz do repositório.
+4. **Crie a pasta `audio` no repositório com os onze arquivos MP3 dentro dela.** No GitHub pelo navegador é possível arrastar uma pasta em navegadores compatíveis; caso não funcione, use o GitHub Desktop para enviar a pasta inteira, ou abra o caminho `audio/` e envie os MP3 ali.
+5. Faça o commit na branch usada pela Vercel. Em Vercel > Deployments, confirme que a atualização está em `Ready`.
 
-Se o GitHub não permitir a substituição em massa pelo navegador, abra cada arquivo existente, clique no ícone de lápis (Edit), substitua seu conteúdo pelo novo arquivo e faça Commit. Outra opção é usar GitHub Desktop.
+**Atenção:** sem a pasta `audio` no repositório, o player aparecerá mas as músicas não tocarão. Envie somente faixas que você tenha direitos para disponibilizar publicamente.
 
-## Arquivos
-- `index.html`: estrutura
-- `style.css`: aparência
-- `script.js`: funcionamento
-- `playlists.js`: conteúdo dos projetos
-- `README.md`: instruções
+## Como editar
+
+Edite `playlists.js` para mudar títulos e ordem da tracklist. As faixas são lidas a partir da pasta `audio/`. Para colocar capa oficial, crie uma pasta `capas` com a imagem e adicione ao objeto de projeto `cover: "capas/nome-da-capa.jpg",`.
+
+## Armazenamento
+
+A pasta `audio` pesa aproximadamente 53 MB. Para uma biblioteca pessoal pequena pode funcionar em hospedagem estática, mas confira os limites e termos atuais do GitHub/Vercel. Em projetos maiores, considere armazenamento de áudio separado. O repositório público permite que qualquer pessoa baixe as faixas, mesmo que não exista botão de download no site.

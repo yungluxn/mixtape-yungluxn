@@ -1,12 +1,102 @@
 (() => {
   'use strict';
-  const $ = s => document.querySelector(s);
+  const $ = selector => document.querySelector(selector);
   const projects = typeof PLAYLISTS === 'undefined' ? [] : PLAYLISTS;
-  const element = (tag, className, label) => {const node=document.createElement(tag);if(className)node.className=className;if(label!==undefined)node.textContent=label;return node;};
-  const safeColor = c => /^#[0-9a-f]{6}$/i.test(c||'') ? c : '#333333';
-  function safeUrl(value) {if(typeof value!=='string'||!value.trim())return null;try{const u=new URL(value,location.href);return (['https:','http:'].includes(u.protocol)||(!/^[a-z]+:/i.test(value)&&!value.startsWith('//'))) ? u.href : null;}catch{return null;}}
-  function cover(project,cls){const node=element('div',cls);const src=safeUrl(project.cover);if(src){node.classList.add('has-image');node.style.backgroundImage=`url("${src.replace(/"/g,'%22')}")`;}else{const [first,second]=project.colors||[];node.style.background=`linear-gradient(135deg,${safeColor(first)},${safeColor(second)})`;node.append(element('span','cover-symbol',project.symbol||'◉'));}return node;}
-  function openProject(p){$('#dialogCover').replaceWith(cover(p,'dialog-cover'));$('#dialogCover')?.removeAttribute('id');$('.dialog-cover').id='dialogCover';$('#dialogYear').textContent=p.year||'PROJETO';$('#dialogTitle').textContent=p.title||'Sem título';$('#dialogDesc').textContent=p.description||p.subtitle||'';const tracks=$('#dialogTracks');tracks.replaceChildren();if(!(p.tracks||[]).length){tracks.append(element('p','no-tracks','Informações sobre as faixas em breve.'));}else{p.tracks.forEach((t,i)=>{const row=element('div','track');row.append(element('span','track-index',String(i+1).padStart(2,'0')));const info=element('div','track-details');info.append(element('strong','',t.title||'Sem título'));if(t.artist)info.append(element('small','',t.artist));row.append(info);const audio=safeUrl(t.audio);const link=safeUrl(t.url);if(audio){const player=element('audio');player.controls=true;player.preload='none';player.src=audio;row.append(player);}else if(link){const a=element('a','track-link','ouvir ↗');a.href=link;a.target='_blank';a.rel='noopener noreferrer';row.append(a);}tracks.append(row);});}$('#projectDialog').showModal();}
-  const list=$('#projectsList');projects.forEach(p=>{const btn=element('button','project-card');btn.type='button';btn.setAttribute('aria-label','Ver projeto '+p.title);btn.append(cover(p,'project-cover'),element('span','project-title',p.title),element('span','project-subtitle',p.subtitle||p.year||''));btn.onclick=()=>openProject(p);list.append(btn);});
-  $('#projectCount').textContent=projects.length+' '+(projects.length===1?'projeto':'projetos');$('#emptyState').hidden=projects.length!==0;$('#year').textContent=new Date().getFullYear();$('#closeDialog').onclick=()=>$('#projectDialog').close();$('#projectDialog').addEventListener('click',e=>{if(e.target===$('#projectDialog'))$('#projectDialog').close();});$('#projectDialog').addEventListener('close',()=>{$('#projectDialog').querySelectorAll('audio').forEach(a=>a.pause());});
+  const audio = $('#trackPlayer');
+  const dialog = $('#projectDialog');
+  let activeProject = null;
+  let activeIndex = -1;
+  const element = (tag, className, label) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (label !== undefined) node.textContent = label;
+    return node;
+  };
+  const safeColor = c => /^#[0-9a-f]{6}$/i.test(c || '') ? c : '#333333';
+  function safeUrl(value) {
+    if (typeof value !== 'string' || !value.trim()) return null;
+    try {
+      const u = new URL(value, location.href);
+      return ['https:', 'http:'].includes(u.protocol) ? u.href : null;
+    } catch { return null; }
+  }
+  function cover(project, cls) {
+    const node = element('div', cls);
+    const src = safeUrl(project.cover);
+    if (src) {
+      node.classList.add('has-image');
+      node.style.backgroundImage = `url("${src.replace(/"/g, '%22')}")`;
+    } else {
+      const [first, second] = project.colors || [];
+      node.style.background = `linear-gradient(135deg,${safeColor(first)},${safeColor(second)})`;
+      node.append(element('span', 'cover-symbol', project.symbol || '◉'));
+    }
+    return node;
+  }
+  function selectTrack(index, shouldPlay = true) {
+    const tracks = activeProject?.tracks || [];
+    if (index < 0 || index >= tracks.length) return;
+    const track = tracks[index];
+    const src = safeUrl(track.audio);
+    if (!src) return;
+    activeIndex = index;
+    audio.src = src;
+    $('#nowPlaying').textContent = `${String(index + 1).padStart(2, '0')} · ${track.title}`;
+    document.querySelectorAll('.track-select').forEach((button, i) => {
+      button.classList.toggle('is-current', i === index);
+      button.setAttribute('aria-current', i === index ? 'true' : 'false');
+    });
+    if (shouldPlay) audio.play().catch(() => {});
+  }
+  function openProject(project) {
+    audio.pause(); audio.removeAttribute('src'); audio.load();
+    activeProject = project; activeIndex = -1;
+    const oldCover = $('#dialogCover');
+    const newCover = cover(project, 'dialog-cover'); newCover.id = 'dialogCover';
+    oldCover.replaceWith(newCover);
+    $('#dialogYear').textContent = project.year || 'PROJETO';
+    $('#dialogTitle').textContent = project.title || 'Sem título';
+    $('#dialogDesc').textContent = project.description || 'Projeto em desenvolvimento.';
+    $('#nowPlaying').textContent = 'Selecione uma faixa';
+    const tracks = $('#dialogTracks'); tracks.replaceChildren();
+    const available = (project.tracks || []).filter(t => safeUrl(t.audio));
+    $('#playerBox').hidden = available.length === 0;
+    if (!(project.tracks || []).length) {
+      tracks.append(element('p', 'no-tracks', 'Tracklist em breve.'));
+    } else {
+      project.tracks.forEach((track, i) => {
+        const row = element('div', 'track');
+        const button = element('button', 'track-select');
+        button.type = 'button';
+        button.append(element('span', 'track-index', String(i + 1).padStart(2, '0')));
+        button.append(element('span', 'track-name', track.title || 'Sem título'));
+        button.append(element('span', 'track-duration', track.duration || ''));
+        if (safeUrl(track.audio)) button.onclick = () => selectTrack(i);
+        else button.disabled = true;
+        row.append(button);
+        tracks.append(row);
+      });
+    }
+    dialog.showModal();
+  }
+  $('#previousTrack').onclick = () => selectTrack(Math.max(0, activeIndex - 1));
+  $('#nextTrack').onclick = () => selectTrack(Math.min((activeProject?.tracks || []).length - 1, activeIndex + 1));
+  audio.addEventListener('ended', () => {
+    if (activeIndex + 1 < (activeProject?.tracks || []).length) selectTrack(activeIndex + 1);
+  });
+  const list = $('#projectsList');
+  projects.forEach(project => {
+    const button = element('button', 'project-card');
+    button.type = 'button';
+    button.setAttribute('aria-label', 'Ver projeto ' + project.title);
+    button.append(cover(project, 'project-cover'), element('span', 'project-title', project.title), element('span', 'project-subtitle', project.subtitle || project.year || ''));
+    button.onclick = () => openProject(project);
+    list.append(button);
+  });
+  $('#projectCount').textContent = projects.length + ' ' + (projects.length === 1 ? 'projeto' : 'projetos');
+  $('#emptyState').hidden = projects.length !== 0;
+  $('#year').textContent = new Date().getFullYear();
+  $('#closeDialog').onclick = () => dialog.close();
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener('close', () => { audio.pause(); audio.removeAttribute('src'); audio.load(); });
 })();

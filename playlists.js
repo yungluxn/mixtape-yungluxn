@@ -1,51 +1,72 @@
-/*
-  EDITE AQUI SUAS PLAYLISTS!
-  Cada projeto tem: id (único), title, subtitle, year, colors,
-  symbol, description e tracks (lista de músicas).
-  Para adicionar uma faixa: { title: "Nome", artist: "Artista", url: "https://..." }
-  Se não houver URL, a faixa aparecerá sem link. Use links oficiais.
-  Os projetos abaixo são EXEMPLOS FICTÍCIOS; substitua pelos seus.
-*/
+/* Edita este arquivo para atualizar os projetos, a ordem das músicas e as capas. */
 const PLAYLISTS = [
   {
-    id: "after-hours", title: "after hours", subtitle: "pra quando a cidade dorme", year: "VOL. 01", colors: ["#34356e", "#db70b0"], symbol: "☾", description: "Luzes da cidade, pensamentos soltos e uma madrugada que parece não acabar.",
-    tracks: [
-      { title: "Sua primeira música", artist: "Seu artista favorito", url: "" },
-      { title: "Outra música especial", artist: "Outro artista", url: "" },
-      { title: "A última faixa", artist: "Mais um artista", url: "" }
-    ]
-  },
-  {
-    id: "pixel-hearts", title: "pixel hearts", subtitle: "amor em 128 kbps", year: "VOL. 02", colors: ["#ff7cae", "#f1c4fd"], symbol: "♡", description: "Uma coleção de músicas para guardar como mensagens antigas no computador.",
-    tracks: [
-      { title: "Música que dá saudade", artist: "Artista exemplo", url: "" },
-      { title: "Meu refrão favorito", artist: "Artista exemplo", url: "" }
-    ]
-  },
-  {
-    id: "blue-screen", title: "blue screen", subtitle: "nostalgia digital", year: "VOL. 03", colors: ["#325ed1", "#72dcfc"], symbol: "✳", description: "Uma viagem por pixels, sintetizadores e sons de outro planeta.",
-    tracks: [
-      { title: "Faixa eletrônica 01", artist: "Artista exemplo", url: "" },
-      { title: "Faixa eletrônica 02", artist: "Artista exemplo", url: "" }
-    ]
-  },
-  {
-    id: "soft-static", title: "soft static", subtitle: "barulho bom no fone", year: "VOL. 04", colors: ["#564683", "#b4a0e5"], symbol: "✿", description: "Guitarras suaves, tardes longas e todas as músicas que ficam na cabeça.",
-    tracks: [
-      { title: "Aquela música", artist: "Artista exemplo", url: "" },
-      { title: "Outra favorita", artist: "Artista exemplo", url: "" }
-    ]
-  },
-  {
-    id: "sunset-dialup", title: "sunset dial-up", subtitle: "conectando sentimentos...", year: "VOL. 05", colors: ["#e38474", "#ffd78e"], symbol: "☼", description: "Fim de tarde com cara de lembrança de férias.",
-    tracks: [
-      { title: "Primeiro pôr do sol", artist: "Artista exemplo", url: "" }
-    ]
-  },
-  {
-    id: "moon-radio", title: "moon radio", subtitle: "transmissão da madrugada", year: "VOL. 06", colors: ["#19275e", "#91b4e0"], symbol: "✧", description: "Uma estação de rádio imaginária que só funciona depois da meia-noite.",
-    tracks: [
-      { title: "Sinal encontrado", artist: "Artista exemplo", url: "" }
+    "id": "based-positive-squad-vol-2",
+    "title": "BASED POSITIVE SQUAD VOL. 2",
+    "subtitle": "Mixtape · 2027",
+    "year": "2027",
+    "colors": [
+      "#222222",
+      "#4b4b4b"
+    ],
+    "symbol": "02",
+    "description": "",
+    "tracks": [
+      {
+        "title": "HOLIDAY",
+        "audio": "audio/HOLIDAY.mp3",
+        "duration": "2:23"
+      },
+      {
+        "title": "IMPORTANTE",
+        "audio": "audio/IMPORTANTE.mp3",
+        "duration": "2:02"
+      },
+      {
+        "title": "MAÇARICO",
+        "audio": "audio/MAÇARICO.mp3",
+        "duration": "2:14"
+      },
+      {
+        "title": "QUARENTENA",
+        "audio": "audio/QUARENTENA.mp3",
+        "duration": "1:59"
+      },
+      {
+        "title": "QUARTETO FANTÁSTICO",
+        "audio": "audio/QUARTETO FANTÁSTICO.mp3",
+        "duration": "2:10"
+      },
+      {
+        "title": "WDYM",
+        "audio": "audio/WDYM.mp3",
+        "duration": "2:01"
+      },
+      {
+        "title": "SCOOBY-DOO",
+        "audio": "audio/SCOOBY-DOO.mp3",
+        "duration": "2:10"
+      },
+      {
+        "title": "2016 FREESTYLE",
+        "audio": "audio/2016 FREESTYLE.mp3",
+        "duration": "1:38"
+      },
+      {
+        "title": "BORRÉ",
+        "audio": "audio/BORRÉ.mp3",
+        "duration": "2:06"
+      },
+      {
+        "title": "COMPROMETIDO",
+        "audio": "audio/COMPROMETIDO.mp3",
+        "duration": "1:48"
+      },
+      {
+        "title": "CONTENTE",
+        "audio": "audio/CONTENTE.mp3",
+        "duration": "2:13"
+      }
     ]
   }
 ];

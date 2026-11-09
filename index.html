@@ -36,6 +36,12 @@
         <p class="eyebrow" id="dialogYear"></p>
         <h2 id="dialogTitle"></h2>
         <p class="dialog-desc" id="dialogDesc"></p>
+        <section id="playerBox" class="player-box" hidden aria-label="Reprodutor da mixtape">
+          <p class="now-playing-label">TOCANDO AGORA</p>
+          <p id="nowPlaying" class="now-playing">Selecione uma faixa</p>
+          <audio id="trackPlayer" controls preload="none"></audio>
+          <div class="player-nav"><button type="button" id="previousTrack">← anterior</button><button type="button" id="nextTrack">próxima →</button></div>
+        </section>
         <div id="dialogTracks" class="dialog-tracks"></div>
       </div>
     </div>

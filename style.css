@@ -6,3 +6,16 @@
 .project-dialog{position:fixed;width:min(890px,calc(100% - 28px));max-height:min(88vh,900px);overflow:auto;background:#171717;color:var(--text);border:1px solid #373737;border-radius:9px;padding:clamp(20px,4vw,40px);box-shadow:0 32px 110px #000b}.project-dialog::backdrop{background:#000c;backdrop-filter:blur(5px)}.close-dialog{position:absolute;top:11px;right:15px;background:none;border:0;color:#aaa;font-size:31px;line-height:1;cursor:pointer}.close-dialog:hover{color:white}.dialog-layout{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:32px}.dialog-cover{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;border-radius:3px}.dialog-cover .cover-symbol{font-size:75px}.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8f8f8f;margin:0 0 10px}.dialog-info h2{font-size:clamp(26px,3.3vw,39px);letter-spacing:-.05em;margin:0 0 12px}.dialog-desc{font-size:13px;color:#aaa;line-height:1.75;margin:0 0 24px}.dialog-tracks{border-top:1px solid var(--border)}.track{display:flex;gap:13px;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)}.track-index{font-size:11px;color:#666;width:18px}.track-details{flex:1;min-width:0}.track-details strong{font-size:13px;font-weight:500;display:block}.track-details small{font-size:11px;color:#888;display:block;margin-top:4px}.track-link{color:var(--accent);text-decoration:none;font-size:12px;white-space:nowrap}.track-link:hover{text-decoration:underline}.track audio{width:140px;height:32px}.no-tracks{font-size:13px;color:var(--muted)}
 @media(max-width:740px){.intro{padding:55px 0 44px}.projects{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 15px}.dialog-layout{grid-template-columns:1fr;gap:22px}.dialog-cover{max-width:230px}.track audio{width:110px}}
 @media(max-width:400px){.projects{gap:27px 12px}.project-title{font-size:13px}.project-subtitle{font-size:11px}.intro h1{font-size:39px}}
+
+/* Player exclusivo da página do projeto */
+.player-box[hidden]{display:none}.player-box{padding:18px 0 20px;border-top:1px solid var(--border)}
+.now-playing-label{font-size:10px;letter-spacing:.11em;color:#888;margin:0 0 7px}
+.now-playing{font-size:13px;font-weight:600;margin:0 0 12px}
+.player-box audio{width:100%;height:42px;display:block;color-scheme:dark}
+.player-nav{display:flex;justify-content:space-between;margin-top:12px;gap:12px}
+.player-nav button{border:1px solid #373737;background:#202020;color:#ddd;padding:8px 12px;border-radius:4px;cursor:pointer;font-size:12px}
+.player-nav button:hover{background:#303030}
+.track{padding:0}.track-select{display:flex;align-items:center;gap:12px;width:100%;padding:14px 4px;background:transparent;border:0;text-align:left;color:#dadada;cursor:pointer}
+.track-select:hover,.track-select.is-current{color:white;background:#242424}
+.track-select:disabled{opacity:.5;cursor:default}.track-name{font-size:13px;flex:1;min-width:0;overflow-wrap:anywhere}
+.track-duration{font-variant-numeric:tabular-nums;font-size:11px;color:#888}
