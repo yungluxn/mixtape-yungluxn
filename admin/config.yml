@@ -1,7 +1,7 @@
 # Configure o Site ID obtido no painel Decap Turbo (veja README).
 backend:
   name: turbo-github
-  turbo_site_id: COLE_AQUI_O_SITE_ID
+  turbo_site_id: 0e5d4311-200d-4664-acc3-d5974a012cab
   branch: main
 
 locale: pt
@@ -39,5 +39,15 @@ collections:
                 collapsed: true
                 fields:
                   - { name: title, label: Nome da faixa, widget: string }
-                  - { name: audio, label: Caminho do MP3, widget: string, required: false, hint: 'Ex. audio/WDYM.mp3. Não use ? no nome físico do arquivo.' }
+                  - name: audio
+                    label: Arquivo MP3
+                    widget: file
+                    required: false
+                    media_folder: /audio
+                    public_folder: /audio
+                    media_library:
+                      allow_multiple: false
+                      config:
+                        max_file_size: 15000000
+                    hint: 'Selecione um MP3 existente ou envie um novo (até 15 MB). Para atualizar uma faixa existente, use um nome de arquivo novo na primeira tentativa. Não use caracteres como ? no nome físico.'
                   - { name: duration, label: 'Duração (m:ss)', widget: string, required: false }
