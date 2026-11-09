@@ -1,17 +1,6 @@
 {
   "projects": [
     {
-      "id": "based-positive-squad-mixtape-vol-2",
-      "title": "BASED POSITIVE SQUAD MIXTAPE VOL. 2",
-      "subtitle": "Yung Luxn · 2027",
-      "year": "2027",
-      "cover": "based-positive-squad-mixtape-vol-2-cover.png",
-      "colors": [
-        "#222222",
-        "#4b4b4b"
-      ],
-      "symbol": "02",
-      "description": "",
       "tracks": [
         {
           "title": "HOLIDAY",
@@ -68,7 +57,18 @@
           "audio": "audio/CONTENTE.mp3",
           "duration": "2:13"
         }
-      ]
+      ],
+      "colors": [
+        "#222222",
+        "#4b4b4b"
+      ],
+      "cover": "based-positive-squad-mixtape-vol-2-cover.png",
+      "subtitle": "Yung Luxn · 2027",
+      "symbol": "02",
+      "title": "BASED POSITIVE SQUAD MIXTAPE VOL. 2",
+      "id": "based-positive-squad-mixtape-vol-2",
+      "description": "Volume 2 do projeto BASED POSITIVE SQUAD MIXTAPE, de Yung Luxn e Juggsyndrome.",
+      "year": "2027"
     }
   ]
 }
