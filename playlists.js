@@ -39,7 +39,7 @@ const PLAYLISTS = [
         "duration": "2:10"
       },
       {
-        "title": "WDYM",
+        "title": "WDYM?",
         "audio": "audio/WDYM.mp3",
         "duration": "2:01"
       },
