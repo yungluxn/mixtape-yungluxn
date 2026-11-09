@@ -1,7 +1,7 @@
 # Configure o Site ID obtido no painel Decap Turbo (veja README).
 backend:
   name: turbo-github
-  turbo_site_id: 0e5d4311-200d-4664-acc3-d5974a012cab
+  turbo_site_id: COLE_AQUI_O_SITE_ID
   branch: main
 
 locale: pt
