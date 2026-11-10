@@ -1,16 +1,13 @@
-mixtape-yungluxn | Botões Play brancos (visual atual preservado)
+MIxtape-yungluxn — Capa ampliada
 
-O que mudou:
-- Tela inicial: Play branco arredondado com triângulo cinza, no canto inferior direito da capa.
-- Dentro do álbum: Play igual, ao lado do título.
-- Ambos iniciam a primeira faixa disponível usando o player já existente.
+Atualização pontual: clicar na capa dentro da página do álbum abre a arte grande, sem painel, com fundo desfocado.
 
-Atualização pelo GitHub Desktop:
+Fechar: X, clique fora da capa ou tecla Esc.
+
+No GitHub Desktop:
 1. Extraia este ZIP.
-2. GitHub Desktop > Repository > Show in Explorer.
-3. Copie index.html, script.js e style.css para a RAIZ do repositório (substitua os anteriores).
-4. Volte ao GitHub Desktop, faça Commit to main e Push origin.
-5. Veja o resultado após o deploy automático da Vercel.
+2. Repository > Show in Explorer.
+3. Copie index.html, script.js e style.css para a raiz do repositório, substituindo os antigos.
+4. Commit to main e Push origin.
 
-Não substitua admin/, data/, audio/ nem imagens da capa.
-A tentativa de atualização direta via conexão do GitHub foi recusada com erro 403.
+Não substitua data/projects.json, pasta admin, capa oficial ou arquivos MP3.

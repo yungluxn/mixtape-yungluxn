@@ -123,12 +123,44 @@
     currentViewProject = null;
     document.title = 'mixtape-yungluxn — projetos';
   }
+  const coverLightbox = $('#coverLightbox');
+  const enlargedCover = $('#enlargedCover');
+  const openCoverButton = $('#openCoverButton');
+  const closeCoverButton = $('#closeCoverButton');
+  let coverReturnFocus = null;
+
+  function openCover(project) {
+    const image = assetUrl(project?.cover);
+    if (!image || coverLightbox.open) return;
+    enlargedCover.src = image;
+    enlargedCover.alt = `Capa do álbum ${project.title}`;
+    coverReturnFocus = document.activeElement;
+    coverLightbox.showModal();
+  }
+
+  function closeCover() {
+    if (coverLightbox.open) coverLightbox.close();
+  }
+
+  closeCoverButton.onclick = closeCover;
+  coverLightbox.addEventListener('click', event => {
+    // Clicar na área escura fora da imagem fecha a ampliação.
+    if (event.target === coverLightbox) closeCover();
+  });
+  coverLightbox.addEventListener('close', () => {
+    enlargedCover.removeAttribute('src');
+    if (coverReturnFocus?.isConnected) coverReturnFocus.focus({ preventScroll: true });
+    coverReturnFocus = null;
+  });
+
   function renderProject(project) {
     currentViewProject = project;
     $('#homeView').hidden = true;
     $('#projectView').hidden = false;
     $('#notFoundView').hidden = true;
     $('#projectCover').replaceChildren(artwork(project, 'release-cover-image'));
+    openCoverButton.disabled = !assetUrl(project.cover);
+    openCoverButton.onclick = () => openCover(project);
     $('#projectYear').textContent = project.year || '';
     $('#projectTitle').textContent = project.title;
     $('#projectArtist').textContent = (project.subtitle || '').split('·')[0].trim();

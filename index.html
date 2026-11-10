@@ -26,7 +26,7 @@
       <article id="projectView" class="project-page" hidden aria-labelledby="projectTitle">
         <a href="/" id="backLink" class="back-link">← todos os projetos</a>
         <div class="release-layout">
-          <div class="release-artwork"><div id="projectCover" class="release-cover"></div></div>
+          <div class="release-artwork"><button type="button" id="openCoverButton" class="cover-zoom-trigger" aria-label="Ampliar capa do álbum" title="Clique para ampliar a capa"><div id="projectCover" class="release-cover"></div></button></div>
           <div class="release-content">
             <p id="projectYear" class="eyebrow"></p>
             <div class="release-title-row">
@@ -66,6 +66,10 @@
     </div>
     <p id="audioError" class="audio-error" role="status" hidden></p>
   </aside>
+  <dialog id="coverLightbox" class="cover-lightbox" aria-label="Capa ampliada do álbum">
+    <button type="button" id="closeCoverButton" class="cover-lightbox-close" aria-label="Fechar capa ampliada" title="Fechar">×</button>
+    <img id="enlargedCover" class="cover-lightbox-image" alt="">
+  </dialog>
   <audio id="trackPlayer" preload="metadata"></audio>
 </body>
 </html>

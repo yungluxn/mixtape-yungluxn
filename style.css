@@ -256,3 +256,74 @@ input[type="range"] { accent-color: #eee; cursor: pointer; }
 @media (max-width: 600px) {
   .project-cover-area .project-play-action { top: auto; right: 12px; bottom: 12px; }
 }
+
+
+/* Ampliação limpa da capa: imagem em destaque e fundo desfocado. */
+.cover-zoom-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: inherit;
+  text-align: inherit;
+  cursor: zoom-in;
+}
+.cover-zoom-trigger:disabled { cursor: default; }
+.cover-zoom-trigger:focus-visible { outline: 2px solid #f4f4f4; outline-offset: 5px; }
+.cover-zoom-trigger .release-cover { width: 100%; }
+.cover-lightbox {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  padding: 0;
+  max-width: 88vw;
+  max-height: 88dvh;
+  width: max-content;
+  height: max-content;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: white;
+}
+.cover-lightbox::backdrop {
+  background: rgba(0,0,0,.76);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
+.cover-lightbox-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(80vw, 740px);
+  max-height: 82dvh;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 20px 80px rgba(0,0,0,.45);
+}
+.cover-lightbox-close {
+  position: absolute;
+  z-index: 2;
+  right: -12px;
+  top: -12px;
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 50%;
+  background: rgba(22,22,22,.88);
+  color: #fff;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+}
+.cover-lightbox-close:hover { background: #333; }
+.cover-lightbox-close:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+@media (max-width: 600px) {
+  .cover-lightbox { max-width: 92vw; max-height: 88dvh; }
+  .cover-lightbox-image { max-width: 88vw; max-height: 82dvh; }
+}
