@@ -1,9 +1,19 @@
-Atualização da página inicial: foto à direita do título e novo subtítulo.
-Texto: arquivo confidencial e oficial da BASED POSITIVE SQUAD.
+MIxTAPE-YUNGLUXN — PLAYER AMPLIADO PARA CELULAR
 
-1. No GitHub Desktop, abra Repository > Show in Explorer.
-2. Copie index.html e home-projetos.jpg para a raiz do repositório.
-3. Substitua o index.html anterior se solicitado.
-4. Faça Commit to main e Push origin.
+O que muda:
+- No celular, toque na capa/nome da música do player pequeno na parte inferior para abrir a tela ampliada.
+- A tela ampliada tem capa grande, música, artista, nome do álbum, barra de progresso e botões anterior/pausar/próxima.
+- O áudio NÃO reinicia ao abrir/fechar: os dois players usam o mesmo elemento de áudio.
+- Use a seta para baixo (ou Esc) para fechar e voltar ao player compacto.
+- O player compacto continua funcionando; desktop e Decap CMS continuam como antes.
 
-Os arquivos do player, das músicas e do Decap CMS não foram alterados.
+Para instalar pelo GitHub Desktop:
+1. Extraia este ZIP.
+2. No GitHub Desktop, abra Repository > Show in Explorer.
+3. Substitua SOMENTE index.html, script.js e style.css na raiz do repositório.
+4. Commit to main; depois Push origin.
+5. Atualize a página depois que a Vercel publicar.
+
+IMPORTANTE: Não substitua suas pastas audio, admin, data, as capas nem o favicon.
+Esta atualização foi baseada nos arquivos mais recentes conhecidos do site, incluindo favicon,
+foto e texto da página inicial, botões Play e ampliação da capa.

@@ -69,7 +69,72 @@
     player.hidden = false;
     document.body.classList.add('has-player');
     markCurrent();
+    syncExpandedPlayer();
   }
+  // Uma única tag <audio> alimenta o player compacto e o ampliado.
+  const expandedDialog = $('#expandedPlayer');
+  const expandedSeek = $('#expandedSeek');
+  const expandedPlay = $('#expandedPlay');
+  const expandedOpenButton = $('#openExpandedPlayer');
+  let expandedReturnFocus = null;
+
+  function syncExpandedPlayer() {
+    if (!playingProject || selectedIndex < 0) return;
+    const track = playingProject.tracks[selectedIndex];
+    $('#expandedTitle').textContent = track.title || 'Sem título';
+    $('#expandedArtist').textContent = (playingProject.subtitle || 'Yung Luxn').split('·')[0].trim();
+    $('#expandedAlbum').textContent = playingProject.title || '';
+    const cover = $('#expandedCover');
+    const trackKey = playingProject.id + ':' + selectedIndex;
+    if (cover.dataset.trackKey !== trackKey) {
+      cover.replaceChildren(artwork(playingProject, 'expanded-cover-image'));
+      cover.dataset.trackKey = trackKey;
+    }
+    expandedPlay.textContent = audio.paused ? '▶' : 'Ⅱ';
+    expandedPlay.setAttribute('aria-label', audio.paused ? 'Reproduzir' : 'Pausar');
+    $('#expandedPrev').disabled = selectedIndex <= 0;
+    $('#expandedNext').disabled = selectedIndex >= playingProject.tracks.length - 1;
+    $('#expandedElapsed').textContent = formatTime(audio.currentTime);
+    $('#expandedTotal').textContent = Number.isFinite(audio.duration) && audio.duration > 0 ? formatTime(audio.duration) : (track.duration || '0:00');
+    expandedSeek.value = Number.isFinite(audio.duration) && audio.duration > 0 ? String(100 * audio.currentTime / audio.duration) : '0';
+    $('#expandedError').hidden = $('#audioError').hidden;
+  }
+
+  function togglePlayback() {
+    if (!audio.src) return;
+    if (audio.paused) audio.play().catch(() => {});
+    else audio.pause();
+  }
+
+  function openExpandedPlayer() {
+    if (!playingProject || !window.matchMedia('(max-width: 760px)').matches || expandedDialog.open) return;
+    expandedReturnFocus = document.activeElement;
+    syncExpandedPlayer();
+    expandedDialog.showModal();
+    document.body.classList.add('expanded-player-open');
+  }
+
+  function closeExpandedPlayer() {
+    if (expandedDialog.open) expandedDialog.close();
+  }
+
+  expandedOpenButton.onclick = openExpandedPlayer;
+  $('#closeExpandedPlayer').onclick = closeExpandedPlayer;
+  expandedDialog.addEventListener('close', () => {
+    document.body.classList.remove('expanded-player-open');
+    if (expandedReturnFocus?.isConnected) expandedReturnFocus.focus({ preventScroll: true });
+    expandedReturnFocus = null;
+  });
+  $('#expandedPrev').onclick = () => jump(-1);
+  $('#expandedNext').onclick = () => jump(1);
+  expandedPlay.onclick = togglePlayback;
+  expandedSeek.oninput = event => {
+    if (Number.isFinite(audio.duration) && audio.duration > 0) audio.currentTime = audio.duration * Number(event.target.value) / 100;
+  };
+  window.matchMedia('(min-width: 761px)').addEventListener('change', event => {
+    if (event.matches) closeExpandedPlayer();
+  });
+
   function chooseTrack(project, index, autoplay = true) {
     const track = project?.tracks?.[index];
     const src = assetUrl(track?.audio);
@@ -243,19 +308,20 @@
   $('#year').textContent = new Date().getFullYear();
   $('#prevButton').onclick = () => jump(-1);
   $('#nextButton').onclick = () => jump(1);
-  $('#playButton').onclick = () => { if (!audio.src) return; if (audio.paused) audio.play().catch(() => {}); else audio.pause(); };
+  $('#playButton').onclick = togglePlayback;
   $('#volumeBar').oninput = event => { audio.volume = Number(event.target.value); };
   audio.volume = Number($('#volumeBar').value);
   $('#seekBar').oninput = event => { if (Number.isFinite(audio.duration) && audio.duration > 0) audio.currentTime = audio.duration * (Number(event.target.value) / 100); };
   audio.addEventListener('timeupdate', () => {
     $('#elapsedTime').textContent = formatTime(audio.currentTime);
     if (Number.isFinite(audio.duration) && audio.duration > 0) $('#seekBar').value = String((audio.currentTime / audio.duration) * 100);
+    syncExpandedPlayer();
   });
-  audio.addEventListener('loadedmetadata', () => { $('#totalTime').textContent = formatTime(audio.duration); });
+  audio.addEventListener('loadedmetadata', () => { $('#totalTime').textContent = formatTime(audio.duration); syncExpandedPlayer(); });
   audio.addEventListener('play', renderPlayer);
   audio.addEventListener('pause', renderPlayer);
   audio.addEventListener('ended', () => { if (playingProject && selectedIndex + 1 < playingProject.tracks.length) jump(1); });
-  audio.addEventListener('error', () => { $('#audioError').textContent = 'Não foi possível carregar esta faixa. Confira se o arquivo MP3 está na pasta audio.'; $('#audioError').hidden = false; });
+  audio.addEventListener('error', () => { $('#audioError').textContent = 'Não foi possível carregar esta faixa. Confira se o arquivo MP3 está na pasta audio.'; $('#audioError').hidden = false; syncExpandedPlayer(); });
   window.addEventListener('popstate', resolveRoute);
   loadProjects();
 })();

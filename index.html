@@ -80,10 +80,10 @@
   </div>
   <aside id="persistentPlayer" class="persistent-player" hidden aria-label="Reprodutor de música">
     <div class="player-inner">
-      <div class="player-identity">
+      <button type="button" class="player-identity" id="openExpandedPlayer" aria-label="Abrir player ampliado" title="Abrir player ampliado">
         <div id="playerCover" class="player-cover"></div>
         <div class="player-info"><strong id="playerTitle">Selecione uma faixa</strong><span id="playerArtist">Yung Luxn</span></div>
-      </div>
+      </button>
       <div class="player-main">
         <div class="player-buttons">
           <button type="button" id="prevButton" aria-label="Faixa anterior" title="Faixa anterior">⏮</button>
@@ -103,6 +103,33 @@
   <dialog id="coverLightbox" class="cover-lightbox" aria-label="Capa ampliada do álbum">
     <button type="button" id="closeCoverButton" class="cover-lightbox-close" aria-label="Fechar capa ampliada" title="Fechar">×</button>
     <img id="enlargedCover" class="cover-lightbox-image" alt="">
+  </dialog>
+  <dialog id="expandedPlayer" class="expanded-player" aria-label="Player ampliado de música">
+    <div class="expanded-player-content">
+      <div class="expanded-header">
+        <button type="button" id="closeExpandedPlayer" class="expanded-close" aria-label="Fechar player ampliado">⌄</button>
+        <span class="expanded-heading">tocando agora</span>
+        <span class="expanded-header-spacer" aria-hidden="true"></span>
+      </div>
+      <div class="expanded-cover-wrap"><div id="expandedCover" class="expanded-cover"></div></div>
+      <div class="expanded-track-info">
+        <div>
+          <strong id="expandedTitle">Selecione uma faixa</strong>
+          <span id="expandedArtist">Yung Luxn</span>
+          <small id="expandedAlbum"></small>
+        </div>
+      </div>
+      <div class="expanded-progress">
+        <input id="expandedSeek" type="range" min="0" max="100" value="0" aria-label="Progresso da música no player ampliado">
+        <div class="expanded-times"><span id="expandedElapsed">0:00</span><span id="expandedTotal">0:00</span></div>
+      </div>
+      <div class="expanded-controls">
+        <button type="button" id="expandedPrev" aria-label="Faixa anterior">⏮</button>
+        <button type="button" id="expandedPlay" class="expanded-main-play" aria-label="Reproduzir">▶</button>
+        <button type="button" id="expandedNext" aria-label="Próxima faixa">⏭</button>
+      </div>
+      <p id="expandedError" class="expanded-error" role="status" hidden>Não foi possível carregar esta faixa.</p>
+    </div>
   </dialog>
   <audio id="trackPlayer" preload="metadata"></audio>
 </body>
