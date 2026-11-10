@@ -23,6 +23,7 @@
     } catch { return null; }
   };
   const projectPath = project => '/projetos/' + encodeURIComponent(project.id);
+  const statusLabel = project => project.status === 'finalizado' ? 'FINALIZADO.' : '(em processo)';
   function artwork(project, className) {
     const el = node('div', className);
     const image = assetUrl(project.cover);
@@ -228,6 +229,7 @@
     openCoverButton.onclick = () => openCover(project);
     $('#projectYear').textContent = project.year || '';
     $('#projectTitle').textContent = project.title;
+    $('#projectStatus').textContent = statusLabel(project);
     $('#projectArtist').textContent = (project.subtitle || '').split('·')[0].trim();
     $('#projectDescription').textContent = project.description || 'Projeto em desenvolvimento.';
     const playProjectButton = $('#playProjectButton');
@@ -276,7 +278,7 @@
         coverLink.append(artwork(project, 'project-cover'));
         coverLink.onclick = event => { if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); navigate(coverLink.getAttribute('href')); } };
         coverArea.append(coverLink);
-        link.append(node('span', 'project-title', project.title), node('span', 'project-subtitle', project.subtitle || project.year || ''));
+        link.append(node('span', 'project-title', project.title), node('span', 'project-subtitle', (project.subtitle || project.year || '') + ' · ' + statusLabel(project)));
         link.onclick = event => { if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); navigate(link.getAttribute('href')); } };
         wrapper.append(coverArea, link);
         if ((project.tracks || []).some(track => assetUrl(track.audio))) {
