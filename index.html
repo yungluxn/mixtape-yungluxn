@@ -6,9 +6,36 @@
   <meta name="theme-color" content="#101010">
   <meta name="description" content="mixtape-yungluxn — projetos musicais de Yung Luxn.">
   <title>mixtape-yungluxn — projetos</title>
-<link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="stylesheet" href="/style.css">
   <script src="/script.js" defer></script>
+  <style>
+    /* Imagem decorativa na área inicial, sem alterar as páginas dos álbuns. */
+    .home-intro-photo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .home-intro-copy { min-width: 0; }
+    .home-intro-photo img {
+      display: block;
+      width: clamp(120px, 15vw, 165px);
+      height: clamp(120px, 15vw, 165px);
+      flex: none;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 4px;
+    }
+    @media (max-width: 480px) {
+      .home-intro-photo { gap: 14px; align-items: center; }
+      .home-intro-photo img { width: 104px; height: 104px; }
+    }
+    @media (max-width: 360px) {
+      .home-intro-photo { flex-wrap: wrap; }
+      .home-intro-photo img { width: 104px; height: 104px; margin-left: auto; }
+    }
+  </style>
 </head>
 <body>
   <div class="site">
@@ -17,7 +44,13 @@
     </header>
     <main id="inicio">
       <section id="homeView" aria-label="Projetos">
-        <div class="intro"><h1>projetos<span class="period">.</span></h1><p>um arquivo pessoal de música, ideias e experimentos.</p></div>
+        <div class="intro home-intro-photo">
+          <div class="home-intro-copy">
+            <h1>projetos<span class="period">.</span></h1>
+            <p>arquivo confidencial e oficial da BASED POSITIVE SQUAD.</p>
+          </div>
+          <img src="/home-projetos.jpg" alt="" aria-hidden="true" width="165" height="165" loading="eager">
+        </div>
         <section class="collection" aria-label="Biblioteca de projetos">
           <div class="section-top"><span id="projectCount" class="count"></span></div>
           <div class="projects" id="projectsList"></div>

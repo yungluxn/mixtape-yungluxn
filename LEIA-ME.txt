@@ -1,13 +1,9 @@
-MIxtape-yungluxn — Capa ampliada
+Atualização da página inicial: foto à direita do título e novo subtítulo.
+Texto: arquivo confidencial e oficial da BASED POSITIVE SQUAD.
 
-Atualização pontual: clicar na capa dentro da página do álbum abre a arte grande, sem painel, com fundo desfocado.
+1. No GitHub Desktop, abra Repository > Show in Explorer.
+2. Copie index.html e home-projetos.jpg para a raiz do repositório.
+3. Substitua o index.html anterior se solicitado.
+4. Faça Commit to main e Push origin.
 
-Fechar: X, clique fora da capa ou tecla Esc.
-
-No GitHub Desktop:
-1. Extraia este ZIP.
-2. Repository > Show in Explorer.
-3. Copie index.html, script.js e style.css para a raiz do repositório, substituindo os antigos.
-4. Commit to main e Push origin.
-
-Não substitua data/projects.json, pasta admin, capa oficial ou arquivos MP3.
+Os arquivos do player, das músicas e do Decap CMS não foram alterados.
