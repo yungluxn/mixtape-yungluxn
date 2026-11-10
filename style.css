@@ -499,3 +499,55 @@ input[type="range"] { accent-color: #eee; cursor: pointer; }
     outline-offset: 2px;
   }
 }
+
+
+/* Mini player mobile: Play/Pause branco, sem emojis. */
+@media (max-width: 760px) {
+  .persistent-player #playButton {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    font-size: 0;
+    line-height: 0;
+    color: #f4f4f4;
+    background: transparent;
+    border: 1.5px solid #e6e6e6;
+    border-radius: 50%;
+    padding: 0;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .persistent-player #playButton::before,
+  .persistent-player #playButton::after {
+    content: "";
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+  }
+  .persistent-player #playButton[aria-label="Reproduzir"]::before {
+    left: 45%;
+    top: 50%;
+    transform: translate(-28%, -50%);
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 10px solid #f4f4f4;
+  }
+  .persistent-player #playButton[aria-label="Pausar"]::before,
+  .persistent-player #playButton[aria-label="Pausar"]::after {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 14px;
+    border-radius: 1px;
+    background: #f4f4f4;
+  }
+  .persistent-player #playButton[aria-label="Pausar"]::before { left: calc(50% - 6px); }
+  .persistent-player #playButton[aria-label="Pausar"]::after { right: calc(50% - 6px); }
+  .persistent-player #playButton:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+}
