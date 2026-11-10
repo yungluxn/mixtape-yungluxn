@@ -68,7 +68,8 @@
       "title": "BASED POSITIVE SQUAD MIXTAPE VOL. 2",
       "id": "based-positive-squad-mixtape-vol-2",
       "description": "Volume 2 do projeto BASED POSITIVE SQUAD MIXTAPE, de Yung Luxn e juggsyndrome.",
-      "year": "2027"
+      "year": "2027",
+      "status": "em processo"
     },
     {
       "published": true,
@@ -89,7 +90,8 @@
           "duration": "2:04",
           "audio": "/audio/sao_paulo_interludio.mp3"
         }
-      ]
+      ],
+      "status": "em processo"
     },
     {
       "published": true,
@@ -115,7 +117,8 @@
           "audio": "/audio/e_se_esse_for_o_fim.mp3",
           "duration": "2:10"
         }
-      ]
+      ],
+      "status": "em processo"
     }
   ]
 }
