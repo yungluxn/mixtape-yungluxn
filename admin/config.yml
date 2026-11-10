@@ -28,6 +28,14 @@ collections:
               - { name: title, label: Título, widget: string }
               - { name: subtitle, label: 'Artista e ano (ex. Yung Luxn · 2027)', widget: string }
               - { name: year, label: Ano, widget: string }
+              - name: status
+                label: Situação do projeto
+                widget: select
+                required: false
+                default: em processo
+                options:
+                  - { label: '(em processo)', value: 'em processo' }
+                  - { label: 'FINALIZADO.', value: 'finalizado' }
               - { name: published, label: Visível no site, widget: boolean, required: false, default: true }
               - { name: cover, label: Capa, widget: image, required: false }
               - { name: description, label: Descrição, widget: text, required: false }
