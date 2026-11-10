@@ -67,7 +67,7 @@
       "symbol": "02",
       "title": "BASED POSITIVE SQUAD MIXTAPE VOL. 2",
       "id": "based-positive-squad-mixtape-vol-2",
-      "description": "Volume 2 do projeto BASED POSITIVE SQUAD MIXTAPE, de Yung Luxn e Juggsyndrome.",
+      "description": "Volume 2 do projeto BASED POSITIVE SQUAD MIXTAPE, de Yung Luxn e juggsyndrome. (em processo)",
       "year": "2027"
     },
     {
@@ -88,6 +88,32 @@
           "title": "são paulo interlúdio",
           "duration": "2:04",
           "audio": "/audio/sao_paulo_interludio.mp3"
+        }
+      ]
+    },
+    {
+      "published": true,
+      "title": "e quando o sol vem, o karma me pede pra esperar mais uma vez",
+      "id": "e-quando-o-sol-vem-o-karma-me-pede-pra-esperar-mais-uma-vez",
+      "subtitle": "Yung Luxn, savemeheitor · 2027",
+      "year": "2027",
+      "cover": "/media/unnamed.png",
+      "description": "álbum de Yung Luxn e savemeheitor (em processo)",
+      "tracks": [
+        {
+          "title": "fiz o que pude",
+          "duration": "4:18",
+          "audio": "/audio/fiz_o_que_pude.mp3"
+        },
+        {
+          "title": "eu sou tão monstro assim?",
+          "duration": "2:25",
+          "audio": "/audio/eu_sou_tao_monstro_assim.mp3"
+        },
+        {
+          "title": "e se esse for o fim",
+          "audio": "/audio/e_se_esse_for_o_fim.mp3",
+          "duration": "2:10"
         }
       ]
     }
