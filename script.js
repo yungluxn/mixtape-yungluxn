@@ -172,20 +172,26 @@
         const link = node('a', 'project-card');
         link.href = projectPath(project);
         link.setAttribute('aria-label', 'Abrir projeto ' + project.title);
-        link.append(artwork(project, 'project-cover'), node('span', 'project-title', project.title), node('span', 'project-subtitle', project.subtitle || project.year || ''));
+        const coverArea = node('div', 'project-cover-area');
+        const coverLink = node('a', 'project-cover-link');
+        coverLink.href = link.href;
+        coverLink.setAttribute('aria-label', 'Abrir capa do projeto ' + project.title);
+        coverLink.append(artwork(project, 'project-cover'));
+        coverLink.onclick = event => { if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); navigate(coverLink.getAttribute('href')); } };
+        coverArea.append(coverLink);
+        link.append(node('span', 'project-title', project.title), node('span', 'project-subtitle', project.subtitle || project.year || ''));
         link.onclick = event => { if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); navigate(link.getAttribute('href')); } };
-        wrapper.append(link);
+        wrapper.append(coverArea, link);
         if ((project.tracks || []).some(track => assetUrl(track.audio))) {
-          const homePlay = node('button', 'project-play-action');
+          const homePlay = node('button', 'project-play-action album-play-button');
           homePlay.type = 'button';
           homePlay.setAttribute('aria-label', 'Reproduzir ' + project.title + ' desde a primeira faixa');
           homePlay.title = 'Reproduzir do início';
-          homePlay.textContent = '▶';
           homePlay.onclick = () => {
             const first = (project.tracks || []).findIndex(track => assetUrl(track.audio));
             if (first >= 0) chooseTrack(project, first);
           };
-          wrapper.append(homePlay);
+          coverArea.append(homePlay);
         }
         container.append(wrapper);
       });

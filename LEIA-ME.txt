@@ -1,13 +1,16 @@
-mixtape-yungluxn — botão Play na biblioteca e na página do projeto
+mixtape-yungluxn | Botões Play brancos (visual atual preservado)
 
-Arquivos alterados: index.html, script.js e style.css.
+O que mudou:
+- Tela inicial: Play branco arredondado com triângulo cinza, no canto inferior direito da capa.
+- Dentro do álbum: Play igual, ao lado do título.
+- Ambos iniciam a primeira faixa disponível usando o player já existente.
 
-Instalação:
-1. Extraia este ZIP no computador.
-2. No GitHub Desktop, abra Repository > Show in Explorer.
-3. Copie index.html, script.js e style.css para a raiz do seu repositório, substituindo os antigos.
-4. Faça Commit to main e Push origin.
-5. Após o deploy da Vercel, teste o botão Play na página inicial e dentro da página do álbum.
+Atualização pelo GitHub Desktop:
+1. Extraia este ZIP.
+2. GitHub Desktop > Repository > Show in Explorer.
+3. Copie index.html, script.js e style.css para a RAIZ do repositório (substitua os anteriores).
+4. Volte ao GitHub Desktop, faça Commit to main e Push origin.
+5. Veja o resultado após o deploy automático da Vercel.
 
-Preservados: dados de data/projects.json, a pasta admin (Decap), a capa e os 11 MP3 da pasta audio.
-A ordem da tracklist continua vindo do Decap CMS.
+Não substitua admin/, data/, audio/ nem imagens da capa.
+A tentativa de atualização direta via conexão do GitHub foi recusada com erro 403.
