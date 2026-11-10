@@ -63,12 +63,33 @@
         "#4b4b4b"
       ],
       "cover": "based-positive-squad-mixtape-vol-2-cover.png",
-      "subtitle": "Yung Luxn · 2027",
+      "subtitle": "Yung Luxn, juggsyndrome · 2027",
       "symbol": "02",
       "title": "BASED POSITIVE SQUAD MIXTAPE VOL. 2",
       "id": "based-positive-squad-mixtape-vol-2",
       "description": "Volume 2 do projeto BASED POSITIVE SQUAD MIXTAPE, de Yung Luxn e Juggsyndrome.",
       "year": "2027"
+    },
+    {
+      "published": true,
+      "id": "eu-sinto-dobrado-e-fumo-dobrado",
+      "title": "eu sinto dobrado, e fumo dobrado",
+      "subtitle": "Yung Luxn, savemeheitor · 2027",
+      "year": "2027",
+      "cover": "/media/unnamed.png",
+      "description": "ep pré álbum de Yung Luxn e savemeheitor. (em processo)",
+      "tracks": [
+        {
+          "title": "eu nunca quis fazer vc chorar",
+          "duration": "1:25",
+          "audio": "/audio/eu_nunca_quis_fazer_vc_chorar.mp3"
+        },
+        {
+          "title": "são paulo interlúdio",
+          "duration": "2:04",
+          "audio": "/audio/sao_paulo_interludio.mp3"
+        }
+      ]
     }
   ]
 }
