@@ -382,3 +382,82 @@ input[type="range"] { accent-color: #eee; cursor: pointer; }
   .expanded-progress { margin-top: 10px; }
   .expanded-controls { padding: 6px 0; }
 }
+
+
+/* Controles minimalistas do player ampliado - desktop */
+@media (max-width: 760px) {
+  .expanded-controls { justify-content: center; gap: 27px; }
+  .expanded-controls button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #f4f4f4;
+    font-size: 0;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .expanded-controls button:disabled { opacity: .3; }
+  .expanded-controls button::before,
+  .expanded-controls button::after {
+    content: "";
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+  }
+  .expanded-controls #expandedPrev::before {
+    left: 12px; top: 17px;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 10px solid #f4f4f4;
+    filter: drop-shadow(9px 0 0 #f4f4f4);
+  }
+  .expanded-controls #expandedPrev::after {
+    left: 10px; top: 17px;
+    width: 2px; height: 14px; background: #f4f4f4;
+  }
+  .expanded-controls #expandedNext::before {
+    right: 12px; top: 17px;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 10px solid #f4f4f4;
+    filter: drop-shadow(-9px 0 0 #f4f4f4);
+  }
+  .expanded-controls #expandedNext::after {
+    right: 10px; top: 17px;
+    width: 2px; height: 14px; background: #f4f4f4;
+  }
+  .expanded-controls .expanded-main-play {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
+    border-radius: 50%;
+    border: 1.5px solid #f4f4f4;
+    background: transparent;
+    color: #f4f4f4;
+    font-size: 0;
+  }
+  .expanded-controls .expanded-main-play[aria-label="Reproduzir"]::before {
+    left: 22px; top: 18px;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 14px solid #f4f4f4;
+  }
+  .expanded-controls .expanded-main-play[aria-label="Pausar"]::before,
+  .expanded-controls .expanded-main-play[aria-label="Pausar"]::after {
+    top: 17px; width: 4px; height: 20px;
+    border-radius: 2px; background: #f4f4f4;
+  }
+  .expanded-controls .expanded-main-play[aria-label="Pausar"]::before { left: 20px; }
+  .expanded-controls .expanded-main-play[aria-label="Pausar"]::after { right: 20px; }
+}
