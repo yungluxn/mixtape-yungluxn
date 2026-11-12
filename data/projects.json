@@ -62,23 +62,16 @@
         "#222222",
         "#4b4b4b"
       ],
+      "status": "em processo",
       "cover": "based-positive-squad-mixtape-vol-2-cover.png",
       "subtitle": "Yung Luxn, juggsyndrome · 2027",
       "symbol": "02",
       "title": "BASED POSITIVE SQUAD MIXTAPE VOL. 2",
       "id": "based-positive-squad-mixtape-vol-2",
       "description": "Volume 2 do projeto BASED POSITIVE SQUAD MIXTAPE, de Yung Luxn e juggsyndrome.",
-      "year": "2027",
-      "status": "em processo"
+      "year": "2027"
     },
     {
-      "published": true,
-      "id": "eu-sinto-dobrado-e-fumo-dobrado",
-      "title": "eu sinto dobrado, e fumo dobrado",
-      "subtitle": "Yung Luxn, savemeheitor · 2027",
-      "year": "2027",
-      "cover": "/media/unnamed.png",
-      "description": "ep pré álbum de Yung Luxn e savemeheitor.",
       "tracks": [
         {
           "title": "eu nunca quis fazer vc chorar",
@@ -89,18 +82,23 @@
           "title": "são paulo interlúdio",
           "duration": "2:04",
           "audio": "/audio/sao_paulo_interludio.mp3"
+        },
+        {
+          "title": "me perdi dnv",
+          "audio": "/audio/mer.mp3",
+          "duration": "2:57"
         }
       ],
-      "status": "em processo"
+      "published": true,
+      "status": "em processo",
+      "cover": "/media/unnamed.png",
+      "subtitle": "Yung Luxn, savemeheitor · 2027",
+      "title": "eu sinto dobrado, e fumo dobrado",
+      "id": "eu-sinto-dobrado-e-fumo-dobrado",
+      "description": "ep pré álbum de Yung Luxn e savemeheitor.",
+      "year": "2027"
     },
     {
-      "published": true,
-      "title": "e quando o sol vem, o karma me pede pra esperar mais uma vez",
-      "id": "e-quando-o-sol-vem-o-karma-me-pede-pra-esperar-mais-uma-vez",
-      "subtitle": "Yung Luxn, savemeheitor · 2027",
-      "year": "2027",
-      "cover": "/media/aee14f7e-9d87-411c-a898-59d845429431.jpeg",
-      "description": "álbum de Yung Luxn e savemeheitor.",
       "tracks": [
         {
           "title": "fiz o que pude",
@@ -118,7 +116,14 @@
           "duration": "2:10"
         }
       ],
-      "status": "em processo"
+      "published": true,
+      "status": "em processo",
+      "cover": "/media/aee14f7e-9d87-411c-a898-59d845429431.jpeg",
+      "subtitle": "Yung Luxn, savemeheitor · 2027",
+      "title": "e quando o sol vem, o karma me pede pra esperar mais uma vez",
+      "id": "e-quando-o-sol-vem-o-karma-me-pede-pra-esperar-mais-uma-vez",
+      "description": "álbum de Yung Luxn e savemeheitor.",
+      "year": "2027"
     }
   ]
 }
